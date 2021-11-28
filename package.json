@@ -12,6 +12,7 @@
   "author": "Junho Lee",
   "license": "ISC",
   "dependencies": {
+    "commander": "^8.3.0",
     "find": "^0.3.0",
     "mkdirp": "^1.0.4"
   }

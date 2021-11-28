@@ -1,10 +1,20 @@
 const fs = require("fs").promises;
 const find = require("find");
 const mkdirp = require("mkdirp");
+const path = require("path");
+const { program } = require("commander");
 
-const filePattern = /alarm_(\d{8})_\d{6}\.mkv/;
-const sourcePath = "/a/b/c";
-const destinationPath = "/a/b/c";
+program
+    .requiredOption('-p, --pattern <pattern>', 'pattern must have')
+    .option('-s, --source <source>')
+    .option('-d, --destination <destination>');
+
+program.parse();
+
+const options = program.opts();
+const filePattern = new RegExp(options.pattern);
+const sourcePath = options.source || path.resolve(__dirname);
+const destinationPath = options.destination || path.resolve(__dirname);
 
 function getFileName(path = "") {
     const split = path.split(/\/|\\/);
