@@ -1,5 +1,4 @@
 const fs = require("fs").promises;
-const mv = require("mv");
 const find = require("find");
 const mkdirp = require("mkdirp");
 
@@ -8,7 +7,7 @@ const sourcePath = "/a/b/c";
 const destinationPath = "/a/b/c";
 
 function getFileName(path = "") {
-    const split = path.split("/");
+    const split = path.split(/\/|\\/);
     return split[split.length - 1];
 }
 
@@ -33,7 +32,7 @@ function findFilesAndMoveToFolder(pattern, path) {
         if (yearOfToday == year && monthOfToday == month && dateOfToday == day) return;
         
         await createDirectory(destinationPath, folderName);
-        mv(file, finalDestinationPath, { mkdirp: true }, function(err) {});
+        fs.rename(file, finalDestinationPath);
     });
 }
 
