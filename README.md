@@ -2,7 +2,7 @@
 
 ```shell
 $ node index.js -p "alarm_(\d{8})_\d{6}\.mkv" -s /a/b/c -d /a/b/c
-
+```
 
 # Folder structure example
 
